@@ -16,8 +16,15 @@ class ulasan extends Model
         'Rating',
     ];
 
+    // Relasi ke tabel penjual
     public function penjual()
     {
         return $this->belongsTo(penjual::class, 'Id_Penjual', 'Id_Penjual');
+    }
+
+    // --- TAMBAHKAN FUNGSI INI AGAR BISA TERHUBUNG KE TABEL RESPON ---
+    public function respon()
+    {
+        return $this->hasOne(Respon::class, 'Id_Respon', 'Id_Ulasan');
     }
 }

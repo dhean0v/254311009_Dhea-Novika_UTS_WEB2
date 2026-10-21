@@ -61,4 +61,8 @@ Route::get('/ulasan/{id}', function ($id) {
     return view('formulasan', compact('penjual'));
 })->name('ulasan.create');
 
+use App\Http\Controllers\ResponController;
+
+Route::post('/respon', [ResponController::class, 'store'])->name('respon.store');
+
 Route::post('/ulasan', [TambahUlasanController::class, 'store'])->name('ulasan.store');

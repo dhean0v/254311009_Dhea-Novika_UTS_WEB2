@@ -56,6 +56,18 @@
                 @enderror
             </div>
 
+            <div class="mb-5">
+                <label class="block text-sm font-semibold mb-2">Request tambah</label>
+                <input type="text" 
+                    name="request_tambah" 
+                    value="{{ old('request_tambah', $data?->request_tambah) }}" 
+                    placeholder="Masukkan request tambah..." 
+                    class="w-full px-4 py-3 border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-black @error('request_tambah') border-red-500 @enderror">
+                @error('request_tambah')
+                    <p class="text-xs text-red-500 mt-1">{{ $message }}</p>
+                @enderror
+            </div>
+
             <div class="flex items-center space-x-3">
                 <button type="submit" class="px-6 py-3 bg-black text-white text-sm font-medium rounded-full hover:bg-gray-800 transition">
                     Simpan

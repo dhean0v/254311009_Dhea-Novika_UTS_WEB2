@@ -16,6 +16,7 @@ class tindaklanjut extends Model
         'Id_Ulasan',
         'Catatan',
         'Status',
+        'request_tambah'
     ];
 
     public function ulasan()

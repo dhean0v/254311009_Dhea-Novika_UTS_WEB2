@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('Id_Ulasan');
             $table->text('Catatan');
             $table->enum('Status', ['Baru', 'Diproses', 'Selesai'])->default('Baru');
+            $table->string('request_tambah')->nullable();
             $table->timestamps();
 
             $table->foreign('Id_Ulasan')->references('Id_Ulasan')->on('ulasan')->onDelete('cascade');

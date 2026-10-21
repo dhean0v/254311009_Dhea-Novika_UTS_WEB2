@@ -9,7 +9,9 @@
            class="px-3 py-3 rounded-xl font-['Libre_Baskerville',serif] text-[15px] {{ request()->routeIs('penjual.edit') ? 'bg-[linear-gradient(180deg,#82b4ff,#cfc4ff)] text-[#2878eb] font-bold' : '' }}">♙ Profil Toko</a>
         <a href="{{ route('penjual.ulasan') }}"
            class="px-3 py-3 rounded-xl font-['Libre_Baskerville',serif] text-[15px] {{ request()->routeIs('penjual.ulasan') ? 'bg-[linear-gradient(180deg,#82b4ff,#cfc4ff)] text-[#2878eb] font-bold' : '' }}">★ Ulasan</a>
-
+        <a href="{{ route('tindaklanjut.index') }}"
+           class="px-3 py-3 rounded-xl font-['Libre_Baskerville',serif] text-[15px] {{ request()->routeIs('tindaklanjut.*') ? 'bg-[linear-gradient(180deg,#82b4ff,#cfc4ff)] text-[#2878eb] font-bold' : '' }}">✎ Tindak Lanjut</a>
+        
         <form method="POST" action="{{ route('auth.logout') }}" class="md:mt-auto">
             @csrf
             <button type="submit" class="px-3 py-3 text-[#e03a3a] font-bold cursor-pointer">⇥ Logout</button>

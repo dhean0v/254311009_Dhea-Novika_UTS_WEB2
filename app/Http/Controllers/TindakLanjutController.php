@@ -42,28 +42,30 @@ class TindakLanjutController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'Id_Ulasan' => 'required|exists:ulasan,Id_Ulasan|unique:tindak_lanjut,Id_Ulasan',
-            'Catatan'   => 'required|string|min:5',
-            'Status'    => 'required|in:Baru,Diproses,Selesai',
+            'Id_Ulasan'      => 'required|exists:ulasan,Id_Ulasan|unique:tindak_lanjut,Id_Ulasan',
+            'Catatan'        => 'required|string|min:5',
+            'Status'         => 'required|in:Baru,Diproses,Selesai',
+            'request_tambah' => 'required|string', 
         ], [
-            'Id_Ulasan.required' => 'Pilih ulasan keluhan terlebih dahulu.',
-            'Id_Ulasan.unique'   => 'Ulasan ini sudah dibuatkan tindak lanjut.',
-            'Catatan.required'   => 'Catatan tindak lanjut wajib diisi.',
-            'Catatan.min'        => 'Catatan minimal terdiri dari 5 karakter.',
-            'Status.required'    => 'Pilih status tindak lanjut.',
+            'Id_Ulasan.required'      => 'Pilih ulasan keluhan terlebih dahulu.',
+            'Id_Ulasan.unique'        => 'Ulasan ini sudah dibuatkan tindak lanjut.',
+            'Catatan.required'        => 'Catatan tindak lanjut wajib diisi.',
+            'Catatan.min'             => 'Catatan minimal terdiri dari 5 karakter.',
+            'Status.required'         => 'Pilih status tindak lanjut.',
+            'request_tambah.required' => 'Request tambah tindak lanjut wajib diisi.', 
         ]);
 
         $ulasan = ulasan::where('Id_Penjual', Auth::id())->findOrFail($request->Id_Ulasan);
 
         tindaklanjut::create([
-            'Id_Ulasan' => $ulasan->Id_Ulasan,
-            'Catatan'   => $request->Catatan,
-            'Status'    => $request->Status,
+            'Id_Ulasan'      => $ulasan->Id_Ulasan,
+            'Catatan'        => $request->Catatan,
+            'Status'         => $request->Status,
+            'request_tambah' => $request->request_tambah,
         ]);
 
         return redirect()->route('tindaklanjut.index')->with('success', 'Tindak lanjut berhasil ditambahkan!');
     }
-
 
     public function edit($id)
     {
@@ -88,17 +90,20 @@ class TindakLanjutController extends Controller
         })->findOrFail($id);
 
         $request->validate([
-            'Catatan' => 'required|string|min:5',
-            'Status'  => 'required|in:Baru,Diproses,Selesai',
+            'Catatan'        => 'required|string|min:5',
+            'Status'         => 'required|in:Baru,Diproses,Selesai',
+            'request_tambah' => 'required|string', 
         ], [
-            'Catatan.required' => 'Catatan wajib diisi.',
-            'Catatan.min'      => 'Catatan minimal 5 karakter.',
-            'Status.required'  => 'Status wajib dipilih.',
+            'Catatan.required'        => 'Catatan wajib diisi.',
+            'Catatan.min'             => 'Catatan minimal 5 karakter.',
+            'Status.required'         => 'Status wajib dipilih.',
+            'request_tambah.required' => 'Request tambah wajib diisi.',
         ]);
 
         $data->update([
-            'Catatan' => $request->Catatan,
-            'Status'  => $request->Status,
+            'Catatan'        => $request->Catatan,
+            'Status'         => $request->Status,
+            'request_tambah' => $request->request_tambah,
         ]);
 
         return redirect()->route('tindaklanjut.index')->with('success', 'Tindak lanjut berhasil diperbarui!');

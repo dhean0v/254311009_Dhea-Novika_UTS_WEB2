@@ -27,4 +27,9 @@ class ulasan extends Model
     {
         return $this->hasOne(Respon::class, 'Id_Respon', 'Id_Ulasan');
     }
+
+    public function tindakLanjut()
+    {
+        return $this->hasOne(tindaklanjut::class, 'Id_Ulasan', 'Id_Ulasan');
+    }
 }

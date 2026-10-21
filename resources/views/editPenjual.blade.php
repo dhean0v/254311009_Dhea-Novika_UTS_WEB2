@@ -7,7 +7,7 @@
 
 <div class="border border-[#dde1ea] rounded-[40px] p-7 bg-white">
     <div class="bg-[linear-gradient(180deg,#82b4ff,#cfc4ff)] rounded-[26px] p-6 flex items-center gap-6 mb-8">
-        <div class="font-bold text-[#2878eb] min-w-[100px] text-center">FOTO TOKO</div>
+        <!-- <div class="font-bold text-[#2878eb] min-w-[100px] text-center">FOTO TOKO</div> -->
         <div>
             <h2 class="text-[22px] font-bold mb-1">{{ $penjual->Nama_Penjual ?? 'Toko belum diisi' }}</h2>
             <p class="text-sm text-[#6b7385]">{{ $penjual->Alamat_Penjual ?? '-' }}</p>

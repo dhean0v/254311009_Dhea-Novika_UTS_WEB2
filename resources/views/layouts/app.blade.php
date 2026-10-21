@@ -11,22 +11,29 @@
 
 <body class="font-['Archivo',sans-serif] text-[#12294f] bg-white">
     <header class="flex items-center justify-between px-4 md:px-10 py-3 border-b border-[#dde1ea]">
-        <a href="{{ route('dashboard') }}">
-            <div class="font-['Libre_Baskerville',serif] text-2xl font-bold">UlasinYuk</div>
-            <small class="block text-[11px] text-[#6b7385]">Ulasan untuk Penjual Terpercaya</small>
-        </a>
-
-        <div>
+        <div class="flex items-center gap-4">
             @guest
-            <nav class="hidden md:flex items-center">
-                <a href="{{ route('dashboard') }}"
-                    class="mx-4 {{ request()->routeIs('dashboard') ? 'text-[#12294f] font-bold' : 'text-[#6b7385]' }}">Beranda</a>
-                <a href="{{ route('dashboard') }}#daftar-penjual" class="mx-4 text-[#6b7385]">Daftar Penjual</a>
-            </nav>
+            <div class="flex items-center gap-3.5">
+                <a href="{{ route('dashboard') }}" class="block">
+                    <div class="font-['Libre_Baskerville',serif] text-2xl font-bold">UlasinYuk</div>
+                    <small class="block text-[11px] text-[#6b7385]">Ulasan untuk Penjual Terpercaya</small>
+                </a>
+                <nav class="hidden md:flex items-center mt-2">
+                    <a href="{{ route('dashboard') }}"
+                        class="mx-4 {{ request()->routeIs('dashboard') ? 'text-[#12294f] font-bold' : 'text-[#6b7385]' }}">Beranda</a>
+                    <a href="{{ route('dashboard') }}#daftar-penjual" class="mx-4 {{ request()->fullUrlIs(url('/dashboard') . '#daftar-penjual') ? 'text-[#12294f] font-bold' : 'text-[#6b7385]' }}">Daftar Penjual</a>
+                </nav>
+            </div>
             @endguest
             @auth
-            <nav class="hidden md:flex items-center">
-            </nav>
+            <div>
+                <a href="{{ route('homePenjual') }}" class="block">
+                    <div class="font-['Libre_Baskerville',serif] text-2xl font-bold">UlasinYuk</div>
+                    <small class="block text-[11px] text-[#6b7385]">Ulasan untuk Penjual Terpercaya</small>
+                </a>
+                <nav class="hidden md:flex items-center mt-2">
+                </nav>
+            </div>
             @endauth
         </div>
 

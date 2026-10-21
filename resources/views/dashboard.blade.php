@@ -21,9 +21,9 @@
             @php $rata = $p->ulasan->avg('Rating') ?? 0; @endphp
             <div class="kartu-penjual border border-[#dde1ea] rounded-[40px] p-3 bg-white"
                  data-nama="{{ strtolower($p->Nama_Penjual . ' ' . $p->Alamat_Penjual) }}">
-                <div class="h-[116px] rounded-[26px] bg-[linear-gradient(180deg,#82b4ff,#cfc4ff)] grid place-items-center text-[#2878eb] font-bold text-xl">
+                <!-- <div class="h-[116px] rounded-[26px] bg-[linear-gradient(180deg,#82b4ff,#cfc4ff)] grid place-items-center text-[#2878eb] font-bold text-xl">
                     FOTO {{ $i + 1 }}
-                </div>
+                </div> -->
                 <h3 class="text-base font-bold mt-4 mx-1 mb-2">{{ $p->Nama_Penjual }}</h3>
                 <small class="block text-sm text-[#6b7385] mx-1 mb-3.5 line-clamp-1">{{ $p->Alamat_Penjual }}</small>
                 <p class="text-[#f5a623] font-['Libre_Baskerville',serif] text-sm mx-1 mb-2.5">

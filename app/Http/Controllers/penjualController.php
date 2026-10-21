@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\penjual;
+use App\Models\ulasan;
 
 class penjualController extends Controller
 {
@@ -30,5 +31,18 @@ class penjualController extends Controller
 
         // Redirect ke halaman home setelah berhasil menyimpan penjual
         return redirect()->route('homePenjual')->with('success', 'Toko berhasil disimpan!');
-    }
+        }
+
+        public function hapusUlasan($id) {
+        $data = ulasan::findOrFail($id);
+
+        // Pastikan ulasan ini milik toko yang sedang login
+        if ($data->Id_Penjual != Auth::id()) {
+            abort(403);
+        }
+
+        $data->delete();
+
+        return redirect()->route('penjual.ulasan')->with('success', 'Ulasan berhasil dihapus!');
+        }
 }

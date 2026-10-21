@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\penjualController;
 use App\Http\Controllers\TambahUlasanController;
+use App\Http\Controllers\TindakLanjutController;
 use App\Models\penjual;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -48,6 +49,14 @@ Route::middleware('auth')->group(function () {
 
     // Hapus Ulasan (khusus penjual yang login)
     Route::delete('/ulasan/{id}', [penjualController::class, 'hapusUlasan'])->name('ulasan.destroy');
+
+    // Tindak Lanjut Keluhan
+    Route::get('/tindaklanjut', [TindakLanjutController::class, 'index'])->name('tindaklanjut.index');
+    Route::get('/tindaklanjut/tambah', [TindakLanjutController::class, 'create'])->name('tindaklanjut.create');
+    Route::post('/tindaklanjut', [TindakLanjutController::class, 'store'])->name('tindaklanjut.store');
+    Route::get('/tindaklanjut/{id}/edit', [TindakLanjutController::class, 'edit'])->name('tindaklanjut.edit');
+    Route::put('/tindaklanjut/{id}', [TindakLanjutController::class, 'update'])->name('tindaklanjut.update');
+    Route::delete('/tindaklanjut/{id}', [TindakLanjutController::class, 'destroy'])->name('tindaklanjut.destroy');
 });
 
 // 4. Public Routes (Akses Umum Pembeli)
